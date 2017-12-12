@@ -3,6 +3,17 @@ import '../App.css';
 import  Form from './Form';
 import  List from './List';
 
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+
+const styles = {
+    root: {
+        width: '100%',
+    },
+};
+
 class App extends Component {
 
     state = {
@@ -40,17 +51,24 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <input type="text" placeholder="Search..." onChange={this.searchChanged} />
+                <AppBar position="static" color="default">
+                    <Toolbar>
+                        <Typography type="title" color="inherit">
+                            <input type="text" placeholder="Search..." onChange={this.searchChanged} />
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+
+                <List
+                    removeMe={this.removeMe}
+                    todos={this.state.todos}
+                    query={this.state.query}
+                />
                 <Form
                     handleChange={this.handleChange}
                     inputValue={this.state.inputValue}
                     handleSubmit={this.handleSubmit}
 
-                />
-                <List
-                    removeMe={this.removeMe}
-                    todos={this.state.todos}
-                    query={this.state.query}
                 />
             </div>
         );
@@ -58,3 +76,4 @@ class App extends Component {
 }
 
 export default App;
+

@@ -2,6 +2,9 @@
  * Created by krzysiek on 11/12/2017.
  */
 import React, {Component} from 'react'
+import DeleteIcon from 'material-ui-icons/Delete';
+import Tooltip from 'material-ui/Tooltip';
+import IconButton from 'material-ui/IconButton';
 
 const style = {
     checked: {
@@ -33,7 +36,11 @@ render()
             <span style={this.state.checked ? style.checked : style.unChecked}>
           {this.props.label}
                 {this.props.todo.value}</span>
-            <button onClick={() => this.props.removeMe(this.props.index)}>Remove</button>
+            <Tooltip id="tooltip-icon" title="Delete" placement="bottom">
+                <IconButton aria-label="Delete">
+                    <DeleteIcon onClick={() => this.props.removeMe(this.props.index)}/>
+                </IconButton>
+            </Tooltip>
         </div>
     )
 }
