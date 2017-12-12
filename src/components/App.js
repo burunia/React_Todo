@@ -6,6 +6,7 @@ import  List from './List';
 class App extends Component {
 
     state = {
+        query: '',
         inputValue: "",
         todos: [
             {value: 'Naumiej  się Reacta', done: false},
@@ -19,7 +20,10 @@ class App extends Component {
         this.setState({
             todos: this.state.todos.filter((_, i) => i !== index)
         })
+    }
 
+    searchChanged = (evt) => {
+        this.setState({query: evt.target.value})
     }
 
     handleSubmit = (evt) => {
@@ -36,14 +40,17 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <input type="text" placeholder="Search..." onChange={this.searchChanged} />
                 <Form
                     handleChange={this.handleChange}
                     inputValue={this.state.inputValue}
                     handleSubmit={this.handleSubmit}
+
                 />
                 <List
                     removeMe={this.removeMe}
                     todos={this.state.todos}
+                    query={this.state.query}
                 />
             </div>
         );

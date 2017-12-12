@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
-
 import  Task from './Task';
-
 class List extends Component {
 
-    state = {
-        todos: [
-            {value: 'Naumiej  się Reacta', done: false},
-            {value: 'Pucuj trzewiki ', done: true},
-        ]
-    }
-
     render() {
+        let serchedTasks = this.props.todos.filter(
+            (todos) => {
+                return todos.value.indexOf(this.props.query) !== -1;
+            }
+        );
         return (
             <div className="List">
-                {this.props.todos.map((todo, index) => {
+                {serchedTasks.map((todo, index) => {
                     return (
                         <Task
                             key={index}
