@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
 import  Task from './Task';
-import { withStyles } from 'material-ui/styles';
-import ExpansionPanel, {
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-} from 'material-ui/ExpansionPanel';
-import Typography from 'material-ui/Typography';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
 class List extends Component {
 
@@ -21,16 +14,12 @@ class List extends Component {
             <div className="List">
                 {serchedTasks.map((todo, index) => {
                     return (
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography>                        <Task
-                                    key={index}
-                                    index={index}
-                                    removeMe={this.props.removeMe}
-                                    todo={todo}
-                                /></Typography>
-                            </ExpansionPanelSummary>
-                        </ExpansionPanel>
+                        <Task
+                            key={index}
+                            index={index}
+                            removeMe={this.props.removeMe}
+                            todo={todo}
+                        />
                     )
                 })}
 
