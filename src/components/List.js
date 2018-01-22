@@ -14,7 +14,7 @@ class List extends Component {
             <div className="List" >
                 {serchedTasks.map((todo, index) => {
                     return (
-                        <Typography type="display4'" color="inherit" text-align='left'>
+                        <Typography type="body2" color="blue" >
                         <Task
                             key={index}
                             index={index}

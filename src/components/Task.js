@@ -7,20 +7,16 @@ import Tooltip from 'material-ui/Tooltip';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
-import Typography from 'material-ui/Typography';
 
 const style = {
     checked: {
-        textDecoration: 'line-through'
+        textDecoration: 'line-through',
+
     },
     unChecked: {
-        color: 'green'
+        color: 'green',
+
     },
-    flex: {
-
-        justify: 'space-between'
-    }
-
 
 }
 
@@ -44,22 +40,19 @@ class Task extends Component {
         this.setState({checked: event.target.checked});
     }
 
-
     render() {
         return (
-            <div className="Task" style={this.state.flex}>
-                <Typography type="headline'" color="inherit" text-align='left'>
-                <Checkbox style={{float: 'left'}} type="checkbox" onChange={this.handleChange}/>
+            <div className="Task" style={{display: "block", height: 60, paddingTop: 30}}>
+                <Checkbox style={{float: 'left', marginTop: -10}} type="checkbox" onChange={this.handleChange}/>
                 <span style={this.state.checked ? style.checked : style.unChecked}>
           {this.props.label}
                     {this.props.todo.value}</span>
                 <Tooltip id="tooltip-icon" title="Delete" placement="bottom">
-                    <IconButton aria-label="Delete" >
-                        <DeleteIcon style={{textAlign: 'right'}} onClick={() => this.props.removeMe(this.props.index)}/>
+                    <IconButton style={{float: "right", marginTop: -10}} aria-label="Delete">
+                        <DeleteIcon onClick={() => this.props.removeMe(this.props.index)}/>
                     </IconButton>
                 </Tooltip>
-                <Divider/>
-                </Typography>
+                <Divider style={{marginTop: 35}}/>
             </div>
         )
     }
