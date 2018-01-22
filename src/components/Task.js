@@ -54,8 +54,8 @@ class Task extends Component {
           {this.props.label}
                     {this.props.todo.value}</span>
                 <Tooltip id="tooltip-icon" title="Delete" placement="bottom">
-                    <IconButton aria-label="Delete">
-                        <DeleteIcon style={{float: 'left'}} onClick={() => this.props.removeMe(this.props.index)}/>
+                    <IconButton aria-label="Delete" >
+                        <DeleteIcon style={{textAlign: 'right'}} onClick={() => this.props.removeMe(this.props.index)}/>
                     </IconButton>
                 </Tooltip>
                 <Divider/>

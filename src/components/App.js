@@ -58,13 +58,12 @@ class App extends Component {
 
     render() {
         return (
-            <Grid item xs={12} style={{ padding: 30 }}>
+            <Grid item xs={12} style={{ padding: 30, display:'flex' }}>
                 <div className="App" >
                     <Typography type="body1'" color="inherit" text-align='left'>
-                    <AppBar position="static" color="default" >
+                    <AppBar position="static" color="default" style={{flexDirection:'center'}}>
                         <Toolbar>
-
-                                <TextField style={{ float: 'left' }}
+                                <TextField style={{ float: 'left', paddingRight: 40,}}
                                     placeholder="Add Task ..."
                                       handleChange={this.handleChange}
                                       inputValue={this.state.inputValue}
