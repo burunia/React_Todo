@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import '../App.css';
-import  Form from './Form';
-import  List from './List';
-
-import { withStyles } from 'material-ui/styles';
+import Form from './Form';
+import List from './List';
+import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
+import Grid from 'material-ui/Grid';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
+import AddIcon from 'material-ui-icons/Add';
+
 
 const styles = {
     root: {
@@ -22,12 +27,15 @@ class App extends Component {
         todos: [
             {value: 'Naumiej  się Reacta', done: false},
             {value: 'Pucuj trzewiki ', done: true},
-        ]
+        ],
+        direction: 'row',
+        justify: 'left',
+        alignItems: 'left',
     }
     handleChange = (evt) => {
         this.setState({inputValue: evt.target.value});
     }
-    removeMe = (index) =>{
+    removeMe = (index) => {
         this.setState({
             todos: this.state.todos.filter((_, i) => i !== index)
         })
@@ -50,27 +58,35 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <AppBar position="static" color="default">
-                    <Toolbar>
-                        <Typography type="title" color="inherit">
-                            <input type="text" placeholder="Search..." onChange={this.searchChanged} />
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+            <Grid item xs={12} style={{ padding: 30 }}>
+                <div className="App" >
+                    <Typography type="body1'" color="inherit" text-align='left'>
+                    <AppBar position="static" color="default" >
+                        <Toolbar>
 
-                <List
-                    removeMe={this.removeMe}
-                    todos={this.state.todos}
-                    query={this.state.query}
-                />
-                <Form
-                    handleChange={this.handleChange}
-                    inputValue={this.state.inputValue}
-                    handleSubmit={this.handleSubmit}
+                                <TextField style={{ float: 'left' }}
+                                    placeholder="Add Task ..."
+                                      handleChange={this.handleChange}
+                                      inputValue={this.state.inputValue}
+                                      handleSubmit={this.handleSubmit}
+                                >
+                                </TextField>
+                                <TextField  ype="text" placeholder="Search..." onChange={this.searchChanged}/>
 
-                />
-            </div>
+                        </Toolbar>
+                    </AppBar>
+                    </Typography>
+                    <Paper>
+
+                        <List style={{ float: 'left' }}
+                            removeMe={this.removeMe}
+                            todos={this.state.todos}
+                            query={this.state.query}
+                        />
+
+                    </Paper>
+                </div>
+            </Grid>
         );
     }
 }

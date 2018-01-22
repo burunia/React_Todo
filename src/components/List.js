@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import  Task from './Task';
-
+import Typography from 'material-ui/Typography';
 class List extends Component {
 
 
@@ -11,15 +11,17 @@ class List extends Component {
             }
         );
         return (
-            <div className="List">
+            <div className="List" >
                 {serchedTasks.map((todo, index) => {
                     return (
+                        <Typography type="display4'" color="inherit" text-align='left'>
                         <Task
                             key={index}
                             index={index}
                             removeMe={this.props.removeMe}
                             todo={todo}
                         />
+                        </Typography>
                     )
                 })}
 
