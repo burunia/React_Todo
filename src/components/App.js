@@ -49,14 +49,30 @@ class App extends Component {
     }
 
     render() {
+
+        const styleGrid = {
+            padding: 30,
+            display: 'flex'
+        };
+        const styleTextField = {
+            float: 'left',
+            paddingRight: 40,
+        };
+        const styleAppBar = {
+            flexDirection: 'center'
+        };
+        const styleList = {
+            marginTop: 90
+        };
+
         return (
-            <Grid item xs={12} style={{padding: 30, display: 'flex'}}>
+            <Grid item xs={12} style={styleGrid}>
                 <div className="App">
                     <Typography type="body1'" color="inherit" text-align='left'>
-                        <AppBar position="static" color="default" style={{flexDirection: 'center'}}>
+                        <AppBar position="static" color="default" style={styleAppBar}>
                             <Toolbar>
                                 <TextField
-                                    style={{float: 'left', paddingRight: 40,}}
+                                    style={styleTextField}
                                     placeholder="Add Task ..."
                                     onChange={this.handleChange}
                                     inputValue={this.state.inputValue}
@@ -69,7 +85,7 @@ class App extends Component {
                         </AppBar>
                     </Typography>
                     <Paper>
-                        <List style={{marginTop: 90}}
+                        <List style={styleList}
                               removeMe={this.removeMe}
                               todos={this.state.todos}
                               query={this.state.query}

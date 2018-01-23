@@ -17,7 +17,6 @@ const style = {
         color: 'green',
 
     },
-
 }
 
 class Task extends Component {
@@ -39,20 +38,36 @@ class Task extends Component {
     handleChange(event) {
         this.setState({checked: event.target.checked});
     }
-
     render() {
+        const styleTask = {
+            display: "block",
+            height: 60,
+            paddingTop: 30
+        };
+        const styleIconButton = {
+            float: "right",
+            marginTop: -10
+        };
+        const styleDivider = {
+            marginTop: 35
+        };
+        const styleCheckbox = {
+            float: 'left',
+            marginTop: -10
+        };
+
         return (
-            <div className="Task" style={{display: "block", height: 60, paddingTop: 30}}>
-                <Checkbox style={{float: 'left', marginTop: -10}} type="checkbox" onChange={this.handleChange}/>
+            <div className="Task" style={styleTask}>
+                <Checkbox style={styleCheckbox} type="checkbox" onChange={this.handleChange}/>
                 <span style={this.state.checked ? style.checked : style.unChecked}>
           {this.props.label}
                     {this.props.todo.value}</span>
                 <Tooltip id="tooltip-icon" title="Delete" placement="bottom">
-                    <IconButton style={{float: "right", marginTop: -10}} aria-label="Delete">
+                    <IconButton style={styleIconButton} aria-label="Delete">
                         <DeleteIcon onClick={() => this.props.removeMe(this.props.index)}/>
                     </IconButton>
                 </Tooltip>
-                <Divider style={{marginTop: 35}}/>
+                <Divider style={styleDivider}/>
             </div>
         )
     }
