@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
-
 import List from './List';
 import '../App.css';
 
@@ -39,7 +37,8 @@ class App extends Component {
     }
 
     handleSubmit = (evt) => {
-        if (evt.keyCode === 13) {
+
+        if (evt.keyCode === 13 && this.state.inputValue) {
             const newTodo = {
                 value: this.state.inputValue,
                 done: false
